@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="blue">#FF0E24A5</color>
+    <color name="off_white">#FFEFEFEF</color>
+    <color name="gray">#FF8E8E8E</color>
+    
+    <!-- category colors -->
+    <color name="yellow">#FFC9CC41</color>
+    <color name="green">#FF66CC41</color>
+    <color name="mint_green">#FF41CCA7</color>
+    <color name="orange">#FFCC8441</color>
+    <color name="purple">#FF9741CC</color>
+    <color name="brown">#FF7B562F</color>
+    <color name="red">#FFAA143C</color>
+    <color name="pink">#FFF19EC2</color>
+    <color name="salmon">#FFF4DFC2</color>
+</resources>

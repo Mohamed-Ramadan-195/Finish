@@ -1,0 +1,75 @@
+<resources>
+    <string name="app_name">To-Do</string>
+
+    <!-- onBoarding -->
+    <string name="title1">Stay Organized, Stay Focused</string>
+    <string name="title2">Prioritize and Plan</string>
+    <string name="title3">Achieve More, Stress Less</string>
+    <string name="body1">Manage your tasks effortlessly and stay on top of your daily schedule with a simple, intuitive interface</string>
+    <string name="body2">Easily prioritize tasks, set deadlines, and get timely reminders to never miss a thing</string>
+    <string name="body3">Track your progress and celebrate achievements as you tick off completed tasks</string>
+    <string name="back">Back</string>
+    <string name="next">Next</string>
+    <string name="skip">Skip</string>
+    <string name="get_started">Get Started</string>
+    <string name="finished">Finished</string>
+    <string name="onBoarding">onBoarding</string>
+
+    <!-- Home -->
+    <string name="home">Home</string>
+    <string name="create_task">Create Task</string>
+    <string name="category_all">Category : All</string>
+
+    <!-- Create Category -->
+    <string name="create_new_category">Create New Category</string>
+    <string name="category_name">Category Name</string>
+    <string name="enter_category_name">Enter Category Name</string>
+    <string name="category_color">Category Color</string>
+    <string name="create_category">Create Category</string>
+
+    <!-- Create Task -->
+    <string name="create_new_task">Create New Task</string>
+    <string name="task_name">Task Name</string>
+    <string name="enter_task_name">Enter Task Name</string>
+    <string name="task_description">Task Description</string>
+    <string name="task_information">Task Information</string>
+    <string name="enter_task_description">Enter Task Description</string>
+    <string name="category">Category</string>
+    <string name="date_time">Date &amp; Time</string>
+    <string name="task_date">Task Date</string>
+    <string name="default_date">1 / 1 / 2025</string>
+    <string name="default_time">08:27</string>
+    <string name="profile">Profile</string>
+    <string name="search">Search</string>
+    <string name="calender">Calender</string>
+    <string name="required">Required</string>
+    <string name="please_select_task_category">Please, Select Task Category</string>
+    <string name="please_select_task_date">Please, Select Task Date</string>
+    <string name="please_select_task_time">Please, Select Task Time</string>
+    <string name="created_task_successfully">Created Task Successfully</string>
+    <string-array name="Categories">
+        <item>Work</item>
+        <item>Sport</item>
+        <item>Health</item>
+        <item>Home</item>
+    </string-array>
+
+    <!-- item task -->
+    <string name="default_task_name">Build To Do List Application</string>
+    <string name="default_task_description">Build To Do List Application with CognoRise InfoTech Internship</string>
+    <string name="delete">Delete</string>
+    <string name="complete">Complete</string>
+
+    <!-- Alert Dialog -->
+    <string name="task_alert">Task Alert</string>
+    <string name="delete_address">Delete Task</string>
+    <string name="complete_address">Complete Task</string>
+    <string name="delete_message">Are you sure you want to delete ?</string>
+    <string name="complete_message">Are you sure you want to complete ?</string>
+    <string name="cancel">Cancel</string>
+
+    <!-- item calender -->
+    <string name="default_day">19</string>
+    <string name="monday">Monday</string>
+
+</resources>
