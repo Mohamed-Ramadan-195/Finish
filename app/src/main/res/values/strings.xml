@@ -37,6 +37,7 @@
     <string name="category">Category</string>
     <string name="date_time">Date &amp; Time</string>
     <string name="task_date">Task Date</string>
+    <string name="task_time">Task Time</string>
     <string name="default_date">1 / 1 / 2025</string>
     <string name="default_time">08:27</string>
     <string name="profile">Profile</string>
@@ -52,6 +53,7 @@
         <item>Sport</item>
         <item>Health</item>
         <item>Home</item>
+
     </string-array>
 
     <!-- item task -->
@@ -71,5 +73,29 @@
     <!-- item calender -->
     <string name="default_day">19</string>
     <string name="monday">Monday</string>
+    <string name="task_deleted_successfully">Task Deleted Successfully</string>
+    <string name="by_name">By Name</string>
+    <string name="by_description">By Description</string>
+    <string name="floating_action_button">Floating Action Button</string>
+    <string name="my_tasks">My Tasks</string>
+    <string name="today">Today, 19 May</string>
+    <string name="show_category">Show Category</string>
+    <string name="show_completed">Show Completed</string>
+    <string name="sort">Sort</string>
+    <string name="task_category">Task Category</string>
+
+    <string name="update">Update</string>
+    <string name="update_task">Update Task</string>
+    <string name="enter_your_update_here">Enter Your Update Here</string>
+    <string name="please_enter_your_update">Please, Enter Your Update</string>
+
+    <!-- dashboard -->
+    <string name="dashboard">Dashboard</string>
+    <string name="list">List</string>
+    <string name="categories">Categories</string>
+    <string name="status">Status</string>
+    <string name="doing">Doing</string>
+    <string name="done">Done</string>
+    <string name="add">Add</string>
 
 </resources>

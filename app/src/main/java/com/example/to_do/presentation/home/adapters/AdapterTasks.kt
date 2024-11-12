@@ -1,59 +1,34 @@
 package com.example.to_do.presentation.home.adapters
 
+import android.annotation.SuppressLint
+import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.recyclerview.widget.AsyncListDiffer
-import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
-import com.example.to_do.R
 import com.example.to_do.databinding.ItemTaskBinding
 import com.example.to_do.domain.model.Task
-import com.example.to_do.util.Constants
-import com.example.to_do.util.Constants.BROWN_COLOR
-import com.example.to_do.util.Constants.COMPLETE
-import com.example.to_do.util.Constants.DELETE
-import com.example.to_do.util.Constants.GREEN_COLOR
-import com.example.to_do.util.Constants.MINT_GREEN_COLOR
-import com.example.to_do.util.Constants.ORANGE_COLOR
-import com.example.to_do.util.Constants.PINK_COLOR
-import com.example.to_do.util.Constants.PURPLE_COLOR
-import com.example.to_do.util.Constants.RED_COLOR
-import com.example.to_do.util.Constants.SALMON_COLOR
-import com.example.to_do.util.Constants.UPDATE
-import com.example.to_do.util.Constants.YELLOW_COLOR
-import com.google.android.material.imageview.ShapeableImageView
-import java.util.ArrayList
+import java.util.Random
 
-class AdapterTasks (val onClick: (Task, String) -> Unit)
-    : RecyclerView.Adapter<AdapterTasks.ViewHolderTasks>() {
-
-    private val differCallback = object : DiffUtil.ItemCallback<Task>() {
-        override fun areItemsTheSame(oldItem: Task, newItem: Task): Boolean {
-            return oldItem.taskId == newItem.taskId &&
-                   oldItem.taskName == newItem.taskName &&
-                   oldItem.taskDescription == newItem.taskDescription &&
-                   oldItem.taskCategory == newItem.taskCategory &&
-                   oldItem.taskDate == newItem.taskDate &&
-                   oldItem.taskTime == newItem.taskTime
-        }
-
-        override fun areContentsTheSame(oldItem: Task, newItem: Task): Boolean {
-            return oldItem == newItem
-        }
-
-    }
-
-    val differ = AsyncListDiffer(this, differCallback)
+class AdapterTasks (
+    private var tasksList : ArrayList<Task>,
+    val onClick : (Task) -> Unit
+) : RecyclerView.Adapter<AdapterTasks.ViewHolderTasks>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolderTasks {
         val itemTaskBinding = ItemTaskBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return ViewHolderTasks(itemTaskBinding)
     }
 
-    override fun getItemCount(): Int = differ.currentList.size
+    override fun getItemCount(): Int = tasksList.size
 
     override fun onBindViewHolder(holder: ViewHolderTasks, position: Int) {
-        holder.bind(differ.currentList[position])
+        holder.bind(tasksList[position])
+    }
+
+    @SuppressLint("NotifyDataSetChanged")
+    fun updateList(list: ArrayList<Task>) {
+        this.tasksList = list
+        notifyDataSetChanged()
     }
 
     inner class ViewHolderTasks(val binding: ItemTaskBinding)
@@ -62,46 +37,32 @@ class AdapterTasks (val onClick: (Task, String) -> Unit)
         init {
             binding.apply {
                 root.setOnClickListener {
-                    onClick.invoke(differ.currentList[layoutPosition], COMPLETE)
+                    onClick.invoke (tasksList[layoutPosition])
                 }
-                deleteButton.setOnClickListener {
-                    onClick.invoke(differ.currentList[layoutPosition], DELETE)
-                }
-                completeButton.setOnClickListener {
-                    onClick.invoke(differ.currentList[layoutPosition], UPDATE)
+                menu.setOnClickListener {
+                    onClick.invoke (tasksList[layoutPosition])
                 }
             }
         }
 
         fun bind(task: Task) {
             binding.apply {
+                taskName.text = task.taskName
                 taskDate.text = task.taskDate
                 taskTime.text = task.taskTime
-                taskName.text = task.taskName
-                taskDescription.text = task.taskDescription
+                taskCategory.text = task.taskCategory
             }
         }
 
-        private fun setCategoryColor (
-            color: String,
-            shapeableImageView: ShapeableImageView
-        ) {
-            binding.apply {
-                shapeableImageView.setBackgroundColor (
-                    when (color) {
-                        YELLOW_COLOR -> R.color.yellow
-                        GREEN_COLOR -> R.color.green
-                        MINT_GREEN_COLOR -> R.color.mint_green
-                        ORANGE_COLOR -> R.color.orange
-                        PURPLE_COLOR -> R.color.purple
-                        BROWN_COLOR -> R.color.brown
-                        RED_COLOR -> R.color.red
-                        PINK_COLOR -> R.color.pink
-                        SALMON_COLOR -> R.color.salmon
-                        else -> R.color.blue
-                    }
-                )
-            }
+        private fun setColorTask() {
+            val random = Random()
+            val color = Color.argb (
+                225,
+                random.nextInt(256),
+                random.nextInt(256),
+                random.nextInt(256)
+            )
+            binding.taskColor.setBackgroundColor(color)
         }
     }
 }

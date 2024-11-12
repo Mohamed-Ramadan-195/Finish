@@ -8,13 +8,11 @@
     android:background="@color/white"
     tools:context=".presentation.splash.SplashFragment" >
 
-    <com.airbnb.lottie.LottieAnimationView
-        android:id="@+id/ic_splash"
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/splash"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:lottie_autoPlay="true"
-        app:lottie_loop="true"
-        app:lottie_rawRes="@raw/splash"
+        app:srcCompat="@drawable/splash"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"

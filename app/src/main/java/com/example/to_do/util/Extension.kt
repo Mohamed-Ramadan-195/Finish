@@ -1,15 +1,21 @@
 package com.example.to_do.util
 
 import android.content.Context
+import android.content.Intent
 import android.view.View
 import android.widget.EditText
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.viewpager2.widget.ViewPager2
 import com.example.to_do.R
+import com.example.to_do.presentation.activity.HomeActivity
 import com.example.to_do.util.Constants.GONE
+import com.example.to_do.util.Constants.TODAY_FORMAT
 import com.example.to_do.util.Constants.VISIBLE
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import java.text.SimpleDateFormat
+import java.util.Calendar
+import java.util.Locale
 
 fun Fragment.declareViewPager(currentItem: Int) {
     val viewPager = activity?.findViewById<ViewPager2>(R.id.viewPager2)
@@ -38,5 +44,17 @@ fun Fragment.emptyEditText(editText: EditText) {
 }
 
 fun Fragment.showToast(message: String) {
-    Toast.makeText(requireActivity(), message, Toast.LENGTH_LONG).show()
+    Toast.makeText(requireActivity(), message, Toast.LENGTH_SHORT).show()
+}
+
+fun Fragment.startHomeActivity() {
+    val intent = Intent(this.activity, HomeActivity::class.java)
+    startActivity(intent)
+    requireActivity().finish()
+}
+
+fun getCurrentDate() : String {
+    val currentDate = Calendar.getInstance().time
+    val formatter = SimpleDateFormat(TODAY_FORMAT, Locale.ENGLISH)
+    return formatter.format(currentDate)
 }

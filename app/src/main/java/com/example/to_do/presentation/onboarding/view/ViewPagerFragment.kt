@@ -5,7 +5,9 @@ import android.view.ViewGroup
 import com.example.to_do.presentation.onboarding.adapters.ViewPagerAdapter
 import com.example.to_do.base.BaseFragment
 import com.example.to_do.databinding.FragmentViewPagerBinding
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class ViewPagerFragment : BaseFragment<FragmentViewPagerBinding>() {
 
     override fun getViewBinding(
@@ -15,9 +17,7 @@ class ViewPagerFragment : BaseFragment<FragmentViewPagerBinding>() {
         return FragmentViewPagerBinding.inflate(inflater, container, false)
     }
 
-    override fun initialize() {
-        handleViewPager()
-    }
+    override fun initialize() = handleViewPager()
 
     override fun onClicks() {}
 

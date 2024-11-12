@@ -16,8 +16,6 @@ class CalenderFragment : BaseFragment<FragmentCalenderBinding>() {
 
     override fun initialize() {  }
 
-    override fun onClicks() {
-        binding.apply {  }
-    }
+    override fun onClicks() {  }
 
 }

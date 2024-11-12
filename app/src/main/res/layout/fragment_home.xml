@@ -9,13 +9,6 @@
     tools:context=".presentation.home.view.HomeFragment" >
 
     <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline3h"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.03" />
-
-    <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline3v"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -29,60 +22,86 @@
         android:orientation="vertical"
         app:layout_constraintGuide_percent="0.97" />
 
-    <com.google.android.material.imageview.ShapeableImageView
-        android:id="@+id/categoryColor"
-        android:layout_width="@dimen/_10sdp"
-        android:layout_height="@dimen/_10sdp"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/addressLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingHorizontal="@dimen/_14sdp"
+        android:paddingTop="@dimen/_14sdp"
+        android:paddingBottom="@dimen/_4sdp"
         android:background="@color/blue"
-        app:layout_constraintStart_toStartOf="@id/guideline3v"
-        app:layout_constraintTop_toTopOf="@id/categoryName"
-        app:layout_constraintBottom_toBottomOf="@id/categoryName" />
+        app:layout_constraintTop_toTopOf="parent" >
 
-    <com.google.android.material.textview.MaterialTextView
-        android:id="@+id/categoryName"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/_20sdp"
-        android:text="@string/category_all"
-        android:textSize="@dimen/_12ssp"
-        android:textStyle="bold"
-        android:fontFamily="@font/poppins_regular"
-        app:layout_constraintStart_toStartOf="@id/guideline3v"
-        app:layout_constraintTop_toBottomOf="@id/guideline3h" />
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/dashboard"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:srcCompat="@drawable/ic_dashboard"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@id/searchBar"
+            app:layout_constraintBottom_toBottomOf="@id/searchBar" />
 
-    <com.google.android.material.divider.MaterialDivider
-        android:id="@+id/line"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginVertical="@dimen/_10sdp"
-        app:layout_constraintStart_toStartOf="@id/guideline3v"
-        app:layout_constraintEnd_toEndOf="@id/guideline97v"
-        app:layout_constraintTop_toBottomOf="@id/categoryName" />
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/menu"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:srcCompat="@drawable/round_density_medium_24"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@id/searchBar"
+            app:layout_constraintBottom_toBottomOf="@id/searchBar" />
+
+        <EditText
+            android:id="@+id/searchBar"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/_20sdp"
+            android:background="@drawable/custom_search_bar"
+            android:hint="@string/search"
+            android:importantForAutofill="no"
+            android:inputType="text"
+            android:textColor="@color/blue"
+            android:fontFamily="@font/poppins_regular"
+            android:drawableStart="@drawable/ic_search"
+            android:drawablePadding="@dimen/_4sdp"
+            app:layout_constraintStart_toEndOf="@id/dashboard"
+            app:layout_constraintEnd_toStartOf="@id/menu"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/today"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:text="@string/today"
+            android:textColor="@color/white"
+            android:textSize="@dimen/_11ssp"
+            android:fontFamily="@font/poppins_regular"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/searchBar" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/myTasks"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/my_tasks"
+            android:textColor="@color/white"
+            android:textSize="@dimen/_12ssp"
+            android:fontFamily="@font/poppins_semi_bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/today" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/tasksRecyclerView"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginTop="@dimen/_6sdp"
+        android:layout_marginTop="@dimen/_10sdp"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         tools:listitem="@layout/item_task"
         app:layout_constraintStart_toStartOf="@id/guideline3v"
         app:layout_constraintEnd_toEndOf="@id/guideline97v"
-        app:layout_constraintTop_toBottomOf="@id/line"
-        app:layout_constraintBottom_toBottomOf="parent" />
-
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/createTask"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:backgroundTint="@color/blue"
-        android:src="@drawable/ic_add"
-        app:ensureMinTouchTargetSize="true"
-        app:showMotionSpec="@anim/nav_default_enter_anim"
-        app:hideMotionSpec="@anim/nav_default_exit_anim"
-        android:layout_marginBottom="@dimen/_27sdp"
-        android:contentDescription="@string/create_task"
-        app:layout_constraintEnd_toEndOf="@id/guideline97v"
+        app:layout_constraintTop_toBottomOf="@id/addressLayout"
         app:layout_constraintBottom_toBottomOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

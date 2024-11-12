@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/white"
-    tools:context=".presentation.home.view.CreateTaskFragment" >
+    tools:context=".presentation.create.view.CreateTaskFragment" >
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline5h"
@@ -30,13 +30,6 @@
         app:layout_constraintGuide_percent="0.03" />
 
     <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline75v"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.75" />
-
-    <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline97v"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -51,15 +44,6 @@
         style="@style/fragment_address"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@id/guideline5h"
-        app:layout_constraintBottom_toBottomOf="@id/guideline5h" />
-
-    <com.google.android.material.imageview.ShapeableImageView
-        android:id="@+id/backButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/ic_arrow_back"
-        app:layout_constraintStart_toStartOf="@id/guideline3v"
         app:layout_constraintTop_toTopOf="@id/guideline5h"
         app:layout_constraintBottom_toBottomOf="@id/guideline5h" />
 
@@ -153,79 +137,69 @@
         app:layout_constraintStart_toStartOf="@id/guideline3v"
         app:layout_constraintTop_toBottomOf="@id/categoryInputLayout" />
 
-    <com.google.android.material.textview.MaterialTextView
-        android:id="@+id/taskDate"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="@dimen/_8sdp"
-        android:layout_marginTop="@dimen/_4sdp"
-        android:hint="@string/default_date"
-        android:textColor="@color/blue"
-        android:textSize="@dimen/_12ssp"
-        android:fontFamily="@font/poppins_regular"
-        android:background="@drawable/rectangle"
-        android:padding="@dimen/_8sdp"
-        app:layout_constraintStart_toStartOf="@id/guideline3v"
-        app:layout_constraintEnd_toEndOf="@id/guideline75v"
-        app:layout_constraintTop_toBottomOf="@id/taskDateAndTimeText" />
-
-    <com.google.android.material.imageview.ShapeableImageView
-        android:id="@+id/taskDateIconShape"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginStart="@dimen/_10sdp"
-        android:src="@drawable/rectangle"
-        app:layout_constraintStart_toStartOf="@id/guideline75v"
-        app:layout_constraintEnd_toEndOf="@id/guideline97v"
-        app:layout_constraintTop_toTopOf="@id/taskDate"
-        app:layout_constraintBottom_toBottomOf="@id/taskDate" />
-
     <com.google.android.material.imageview.ShapeableImageView
         android:id="@+id/dateIcon"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@drawable/ic_date"
-        app:layout_constraintStart_toStartOf="@id/taskDateIconShape"
-        app:layout_constraintEnd_toEndOf="@id/taskDateIconShape"
-        app:layout_constraintTop_toTopOf="@id/taskDateIconShape"
-        app:layout_constraintBottom_toBottomOf="@id/taskDateIconShape" />
+        android:layout_marginEnd="@dimen/_12sdp"
+        app:srcCompat="@drawable/ic_date"
+        app:layout_constraintEnd_toEndOf="@id/taskDateInputLayout"
+        app:layout_constraintTop_toTopOf="@id/taskDateInputLayout"
+        app:layout_constraintBottom_toBottomOf="@id/taskDateInputLayout" />
 
-    <com.google.android.material.textview.MaterialTextView
-        android:id="@+id/taskTime"
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/taskDateInputLayout"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="@dimen/_8sdp"
-        android:layout_marginTop="@dimen/_6sdp"
-        android:hint="@string/default_time"
-        android:textColor="@color/blue"
-        android:textSize="@dimen/_12ssp"
-        android:fontFamily="@font/poppins_regular"
-        android:background="@drawable/rectangle"
-        android:padding="@dimen/_8sdp"
+        android:hint="@string/task_date"
+        app:hintTextColor="@color/blue"
+        app:hintAnimationEnabled="true"
+        app:boxStrokeColor="@color/blue"
         app:layout_constraintStart_toStartOf="@id/guideline3v"
-        app:layout_constraintEnd_toEndOf="@id/guideline75v"
-        app:layout_constraintTop_toBottomOf="@id/taskDate" />
-
-    <com.google.android.material.imageview.ShapeableImageView
-        android:id="@+id/taskTimeIconShape"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginStart="@dimen/_10sdp"
-        android:src="@drawable/rectangle"
-        app:layout_constraintStart_toStartOf="@id/guideline75v"
         app:layout_constraintEnd_toEndOf="@id/guideline97v"
-        app:layout_constraintTop_toTopOf="@id/taskTime"
-        app:layout_constraintBottom_toBottomOf="@id/taskTime" />
+        app:layout_constraintTop_toBottomOf="@id/taskDateAndTimeText" >
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/taskDate"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:inputType="none"
+            android:textColor="@color/blue"
+            android:fontFamily="@font/poppins_regular" />
+
+    </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.imageview.ShapeableImageView
         android:id="@+id/timeIcon"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@drawable/ic_time"
-        app:layout_constraintStart_toStartOf="@id/taskTimeIconShape"
-        app:layout_constraintEnd_toEndOf="@id/taskTimeIconShape"
-        app:layout_constraintTop_toTopOf="@id/taskTimeIconShape"
-        app:layout_constraintBottom_toBottomOf="@id/taskTimeIconShape" />
+        android:layout_marginEnd="@dimen/_12sdp"
+        app:srcCompat="@drawable/ic_time"
+        app:layout_constraintEnd_toEndOf="@id/taskTimeInputLayout"
+        app:layout_constraintTop_toTopOf="@id/taskTimeInputLayout"
+        app:layout_constraintBottom_toBottomOf="@id/taskTimeInputLayout" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/taskTimeInputLayout"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:hint="@string/task_time"
+        app:hintTextColor="@color/blue"
+        app:hintAnimationEnabled="true"
+        app:boxStrokeColor="@color/blue"
+        app:layout_constraintStart_toStartOf="@id/guideline3v"
+        app:layout_constraintEnd_toEndOf="@id/guideline97v"
+        app:layout_constraintTop_toBottomOf="@id/taskDateInputLayout" >
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/taskTime"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:inputType="none"
+            android:textColor="@color/blue"
+            android:fontFamily="@font/poppins_regular" />
+
+    </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/createTaskButton"

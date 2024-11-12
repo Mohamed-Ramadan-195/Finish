@@ -1,28 +1,41 @@
 package com.example.to_do.data.repository
 
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
-import com.example.to_do.data.local.TaskDatabase
+import com.example.to_do.data.local.TaskDao
 import com.example.to_do.domain.model.Task
+import com.example.to_do.domain.repository.TaskRepository
 
 class TaskRepositoryImpl (
-    private val taskDatabase: TaskDatabase
-) {
-    suspend fun insertTask(task: Task) = taskDatabase.getTaskDao().insertTask(task)
+    private val taskDao: TaskDao
+) : TaskRepository {
 
-    suspend fun updateTask(task: Task) = taskDatabase.getTaskDao().updateTask(task)
+    override suspend fun insertTask(task: Task) =
+        taskDao.insertTask(task)
 
-    suspend fun deleteTask(task: Task) = taskDatabase.getTaskDao().deleteTask(task)
+    override suspend fun updateTask(task: Task) =
+        taskDao.updateTask(task)
 
-    fun getAllTasks(): LiveData<List<Task>>
-        = taskDatabase.getTaskDao().getAllTasks()
+    override suspend fun deleteTask(task: Task) =
+        taskDao.deleteTask(task)
 
-    fun getAllTasksByDate(date: String): LiveData<List<Task>>
-        = taskDatabase.getTaskDao().getAllTasksByDate(date)
+    override fun getAllTasks(): List<Task> =
+        taskDao.getAllTasks()
 
-    fun getAllTasksByName(taskName: String): LiveData<List<Task>>
-        = taskDatabase.getTaskDao().getAllTasksByName(taskName)
+    override fun searchTask(query: String?): List<Task> =
+        taskDao.searchTask(query)
 
-    fun getAllTasksByDescription(taskDescription: String): LiveData<List<Task>>
-        = taskDatabase.getTaskDao().getAllTasksByDescription(taskDescription)
+    override fun getAllTasksByDate(date: String): List<Task> =
+        taskDao.getAllTasksByDate(date)
+
+    override fun getAllTasksByName(taskName: String): List<Task> =
+        taskDao.getAllTasksByName(taskName)
+
+    override fun getAllTasksByDescription(taskDescription: String): List<Task> =
+        taskDao.getAllTasksByDescription(taskDescription)
+
+    override fun getAllTasksByCategory(category: String): List<Task> =
+        taskDao.getAllTasksByCategory(category)
+
+    override fun getAllTasksByStatus(status: Int): List<Task> =
+        taskDao.getAllTasksByStatus(status)
+
 }

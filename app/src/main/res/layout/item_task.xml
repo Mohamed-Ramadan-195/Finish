@@ -6,7 +6,7 @@
     android:layout_height="wrap_content"
     android:layout_marginVertical="@dimen/_4sdp"
     app:cardBackgroundColor="@color/white"
-    app:cardCornerRadius="@dimen/_8sdp" >
+    app:cardCornerRadius="@dimen/_10sdp" >
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -21,7 +21,7 @@
             app:layout_constraintGuide_percent="0.05" />
 
         <com.google.android.material.imageview.ShapeableImageView
-            android:id="@+id/categoryColor"
+            android:id="@+id/taskColor"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:src="@drawable/rectangle_empty"
@@ -31,94 +31,128 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent" />
 
-        <com.google.android.material.textview.MaterialTextView
-            android:id="@+id/taskDate"
+        <CheckBox
+            android:id="@+id/checkBox"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="@dimen/_6sdp"
-            android:gravity="center"
-            android:text="@string/default_date"
-            android:textSize="@dimen/_12ssp"
-            android:textColor="@color/gray"
-            android:drawableStart="@drawable/ic_date"
-            android:drawablePadding="@dimen/_4sdp"
+            android:checked="false"
             app:layout_constraintStart_toStartOf="@id/guideline5v"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <com.google.android.material.textview.MaterialTextView
-            android:id="@+id/taskTime"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="@dimen/_6sdp"
-            android:gravity="center"
-            android:text="@string/default_time"
-            android:textSize="@dimen/_12ssp"
-            android:textColor="@color/gray"
-            android:drawableStart="@drawable/ic_time"
-            android:drawablePadding="@dimen/_4sdp"
-            app:layout_constraintStart_toEndOf="@id/taskDate"
             app:layout_constraintTop_toTopOf="parent" />
 
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/taskName"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_margin="@dimen/_6sdp"
+            android:layout_marginEnd="@dimen/_8sdp"
+            android:layout_marginTop="@dimen/_3sdp"
             android:text="@string/default_task_name"
-            android:textSize="@dimen/_13ssp"
+            android:textSize="@dimen/_12ssp"
             android:textColor="@color/black"
             android:textStyle="bold"
             android:fontFamily="@font/poppins_regular"
-            app:layout_constraintStart_toStartOf="@id/guideline5v"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/taskDate" />
+            app:layout_constraintStart_toEndOf="@id/checkBox"
+            app:layout_constraintEnd_toStartOf="@id/menu"
+            app:layout_constraintTop_toTopOf="@id/checkBox"
+            app:layout_constraintBottom_toBottomOf="@id/checkBox" />
 
-        <com.google.android.material.textview.MaterialTextView
-            android:id="@+id/taskDescription"
-            android:layout_width="0dp"
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/menu"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="@dimen/_6sdp"
-            android:text="@string/default_task_description"
-            android:textSize="@dimen/_13ssp"
-            android:fontFamily="@font/poppins_regular"
-            app:layout_constraintStart_toStartOf="@id/guideline5v"
+            android:layout_marginHorizontal="@dimen/_8sdp"
+            app:srcCompat="@drawable/ic_more_vert"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/taskName" />
+            app:layout_constraintTop_toTopOf="@id/taskName"
+            app:layout_constraintBottom_toBottomOf="@id/taskName" />
 
         <com.google.android.material.divider.MaterialDivider
             android:id="@+id/divider"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_margin="@dimen/_5sdp"
+            android:layout_marginHorizontal="@dimen/_8sdp"
+            android:layout_marginBottom="@dimen/_4sdp"
             app:layout_constraintStart_toStartOf="@id/guideline5v"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/taskDescription" />
+            app:layout_constraintTop_toBottomOf="@id/checkBox" />
+
+        <LinearLayout
+            android:id="@+id/dateAndTimeLayout"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="@dimen/_4sdp"
+            android:layout_marginHorizontal="@dimen/_8sdp"
+            app:layout_constraintStart_toStartOf="@id/guideline5v"
+            app:layout_constraintTop_toTopOf="@id/taskCategory"
+            app:layout_constraintBottom_toBottomOf="@id/taskCategory" >
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/taskDate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="@string/default_date"
+                android:textSize="@dimen/_12ssp"
+                android:textColor="@color/gray"
+                android:fontFamily="@font/poppins_regular"
+                android:drawableStart="@drawable/ic_date"
+                android:drawablePadding="@dimen/_4sdp" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/taskTime"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_8sdp"
+                android:layout_gravity="center"
+                android:text="@string/default_time"
+                android:textSize="@dimen/_12ssp"
+                android:textColor="@color/gray"
+                android:fontFamily="@font/poppins_regular"
+                android:drawableStart="@drawable/ic_time"
+                android:drawablePadding="@dimen/_4sdp" />
+
+        </LinearLayout>
 
         <com.google.android.material.textview.MaterialTextView
-            android:id="@+id/deleteButton"
+            android:id="@+id/taskCategory"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="@dimen/_6sdp"
-            android:text="@string/delete"
-            android:textColor="@color/red"
-            android:textSize="@dimen/_13ssp"
-            android:fontFamily="@font/poppins_regular"
-            app:layout_constraintStart_toStartOf="@id/guideline5v"
+            android:layout_marginVertical="@dimen/_5sdp"
+            android:layout_marginHorizontal="@dimen/_8sdp"
+            android:padding="@dimen/_4sdp"
+            android:text="@string/home"
+            android:textColor="@color/white"
+            android:background="@color/blue"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@id/divider"
             app:layout_constraintBottom_toBottomOf="parent" />
 
-        <com.google.android.material.textview.MaterialTextView
-            android:id="@+id/completeButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="@dimen/_6sdp"
-            android:text="@string/complete"
-            android:textColor="@color/blue"
-            android:textSize="@dimen/_13ssp"
-            android:fontFamily="@font/poppins_regular"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/divider"
-            app:layout_constraintBottom_toBottomOf="parent" />
+<!--        <com.google.android.material.textview.MaterialTextView-->
+<!--            android:id="@+id/deleteButton"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginHorizontal="@dimen/_6sdp"-->
+<!--            android:layout_marginVertical="@dimen/_3sdp"-->
+<!--            android:text="@string/delete"-->
+<!--            android:textColor="@color/red"-->
+<!--            android:textSize="@dimen/_12ssp"-->
+<!--            android:fontFamily="@font/poppins_regular"-->
+<!--            app:layout_constraintStart_toStartOf="@id/guideline5v"-->
+<!--            app:layout_constraintTop_toBottomOf="@id/divider"-->
+<!--            app:layout_constraintBottom_toBottomOf="parent" />-->
+
+<!--        <com.google.android.material.textview.MaterialTextView-->
+<!--            android:id="@+id/completeButton"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginHorizontal="@dimen/_6sdp"-->
+<!--            android:layout_marginVertical="@dimen/_3sdp"-->
+<!--            android:text="@string/complete"-->
+<!--            android:textColor="@color/blue"-->
+<!--            android:textSize="@dimen/_12ssp"-->
+<!--            android:fontFamily="@font/poppins_regular"-->
+<!--            app:layout_constraintEnd_toEndOf="parent"-->
+<!--            app:layout_constraintTop_toBottomOf="@id/divider"-->
+<!--            app:layout_constraintBottom_toBottomOf="parent" />-->
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

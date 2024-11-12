@@ -1,6 +1,5 @@
 package com.example.to_do.domain.repository
 
-import androidx.lifecycle.LiveData
 import com.example.to_do.domain.model.Task
 
 interface TaskRepository {
@@ -10,11 +9,17 @@ interface TaskRepository {
 
     suspend fun deleteTask(task: Task)
 
-    fun getAllTasks() : LiveData<List<Task>>
+    fun getAllTasks() : List<Task>
 
-    fun getAllTasksByDate(date: String) : LiveData<List<Task>>
+    fun searchTask(query : String?) : List<Task>
 
-    fun getAllTasksByName(taskName: String) : LiveData<List<Task>>
+    fun getAllTasksByDate(date: String) : List<Task>
 
-    fun getAllTasksByDescription(taskDescription: String) : LiveData<List<Task>>
+    fun getAllTasksByName(taskName: String) : List<Task>
+
+    fun getAllTasksByDescription(taskDescription: String) : List<Task>
+
+    fun getAllTasksByCategory(category: String): List<Task>
+
+    fun getAllTasksByStatus(status: Int): List<Task>
 }

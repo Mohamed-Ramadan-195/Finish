@@ -5,11 +5,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.navigation.fragment.findNavController
-import com.example.to_do.R
 import com.example.to_do.databinding.FragmentThirdScreenBinding
 import com.example.to_do.util.onBoardingFinished
+import com.example.to_do.util.startHomeActivity
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class ThirdScreenFragment : Fragment() {
 
     private var _binding: FragmentThirdScreenBinding? = null
@@ -29,10 +30,8 @@ class ThirdScreenFragment : Fragment() {
     private fun onClicks() {
         binding.apply {
             getStartedButton.setOnClickListener {
-                findNavController().navigate (
-                    R.id.action_viewPagerFragment_to_homeActivity
-                )
                 onBoardingFinished()
+                startHomeActivity()
             }
         }
     }

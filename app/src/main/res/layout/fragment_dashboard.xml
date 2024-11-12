@@ -1,0 +1,250 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    tools:context=".presentation.dashboard.view.DashboardFragment" >
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline3v"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.03" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline97v"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.97" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/addressLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/blue"
+        android:paddingHorizontal="@dimen/_14sdp"
+        android:paddingTop="@dimen/_14sdp"
+        android:paddingBottom="@dimen/_4sdp"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/settings"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/ic_settings" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/today"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:fontFamily="@font/poppins_regular"
+            android:text="@string/today"
+            android:textColor="@color/white"
+            android:textSize="@dimen/_11ssp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/settings" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/myTasks"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/poppins_semi_bold"
+            android:text="@string/dashboard"
+            android:textColor="@color/white"
+            android:textSize="@dimen/_12ssp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/today" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/listCard"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_10sdp"
+        app:cardBackgroundColor="@color/white"
+        app:layout_constraintEnd_toStartOf="@+id/calendarCard"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/addressLayout">
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/listIcon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:drawableStart="@drawable/ic_list_bulleted"
+            android:drawablePadding="@dimen/_6sdp"
+            android:paddingHorizontal="@dimen/_20sdp"
+            android:paddingVertical="@dimen/_10sdp"
+            android:text="@string/list"
+            android:textColor="@color/blue"
+            android:textSize="@dimen/_12ssp" />
+
+    </com.google.android.material.card.MaterialCardView>
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/calendarCard"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_10sdp"
+        app:cardBackgroundColor="@color/white"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/listCard"
+        app:layout_constraintTop_toBottomOf="@id/addressLayout">
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/calendarIcon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:drawableStart="@drawable/ic_calender"
+            android:drawablePadding="@dimen/_6sdp"
+            android:paddingHorizontal="@dimen/_20sdp"
+            android:paddingVertical="@dimen/_10sdp"
+            android:text="@string/calender"
+            android:textColor="@color/blue"
+            android:textSize="@dimen/_12ssp" />
+
+    </com.google.android.material.card.MaterialCardView>
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/categoriesText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_16sdp"
+        android:fontFamily="@font/poppins_semi_bold"
+        android:text="@string/categories"
+        android:textColor="@color/blue"
+        android:textSize="@dimen/_12ssp"
+        app:layout_constraintStart_toStartOf="@id/guideline3v"
+        app:layout_constraintTop_toBottomOf="@id/listCard" />
+
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/addCategory"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="@id/categoriesText"
+        app:layout_constraintEnd_toEndOf="@id/guideline97v"
+        app:layout_constraintTop_toTopOf="@id/categoriesText"
+        app:srcCompat="@drawable/ic_round_add" />
+
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/arrow"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="@id/categoriesText"
+        app:layout_constraintEnd_toStartOf="@id/addCategory"
+        app:layout_constraintTop_toTopOf="@id/categoriesText"
+        app:srcCompat="@drawable/ic_arrow_down_round" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/categoriesRecyclerView"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_2sdp"
+        app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+        app:layout_constraintEnd_toEndOf="@id/guideline97v"
+        app:layout_constraintStart_toStartOf="@id/guideline3v"
+        app:layout_constraintTop_toBottomOf="@id/categoriesText"
+        app:spanCount="2"
+        tools:listitem="@layout/item_category" />
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/statusText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:fontFamily="@font/poppins_semi_bold"
+        android:text="@string/status"
+        android:textColor="@color/blue"
+        android:textSize="@dimen/_12ssp"
+        app:layout_constraintStart_toStartOf="@id/guideline3v"
+        app:layout_constraintTop_toBottomOf="@id/categoriesRecyclerView" />
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/todoCard"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_2sdp"
+        app:cardBackgroundColor="@color/white"
+        app:layout_constraintEnd_toStartOf="@+id/doingCard"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/statusText">
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/todo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:drawableStart="@drawable/ic_circle"
+            android:drawablePadding="@dimen/_6sdp"
+            android:drawableTint="@color/red"
+            android:fontFamily="@font/poppins_regular"
+            android:padding="@dimen/_10sdp"
+            android:text="@string/app_name"
+            android:textColor="@color/dark_blue"
+            android:textSize="@dimen/_12ssp" />
+
+    </com.google.android.material.card.MaterialCardView>
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/doingCard"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_2sdp"
+        app:cardBackgroundColor="@color/white"
+        app:layout_constraintEnd_toStartOf="@+id/doneCard"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/todoCard"
+        app:layout_constraintTop_toBottomOf="@id/statusText">
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/doing"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:drawableStart="@drawable/ic_circle"
+            android:drawablePadding="@dimen/_6sdp"
+            android:drawableTint="@color/orange"
+            android:fontFamily="@font/poppins_regular"
+            android:padding="@dimen/_10sdp"
+            android:text="@string/doing"
+            android:textColor="@color/dark_blue"
+            android:textSize="@dimen/_12ssp" />
+
+    </com.google.android.material.card.MaterialCardView>
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/doneCard"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_2sdp"
+        app:cardBackgroundColor="@color/white"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/doingCard"
+        app:layout_constraintTop_toBottomOf="@id/statusText">
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/done"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:drawableStart="@drawable/ic_circle"
+            android:drawablePadding="@dimen/_6sdp"
+            android:drawableTint="@color/green"
+            android:fontFamily="@font/poppins_regular"
+            android:padding="@dimen/_10sdp"
+            android:text="@string/done"
+            android:textColor="@color/dark_blue"
+            android:textSize="@dimen/_12ssp" />
+
+    </com.google.android.material.card.MaterialCardView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

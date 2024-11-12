@@ -9,9 +9,11 @@ import androidx.navigation.fragment.findNavController
 import com.example.to_do.R
 import com.example.to_do.base.BaseFragment
 import com.example.to_do.databinding.FragmentSplashBinding
-import com.example.to_do.presentation.activity.MainActivity
 import com.example.to_do.util.Constants.SPLASH_TIME
+import com.example.to_do.util.startHomeActivity
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class SplashFragment : BaseFragment<FragmentSplashBinding>() {
 
     override fun getViewBinding (
@@ -23,14 +25,12 @@ class SplashFragment : BaseFragment<FragmentSplashBinding>() {
 
     override fun initialize() = handleSplash()
 
-    override fun onClicks() {}
+    override fun onClicks() {  }
 
     private fun handleSplash() {
         Handler(Looper.myLooper()!!).postDelayed ( {
-            findNavController().navigate (
-                if (checkOnBoarding()) R.id.action_splashFragment_to_homeActivity
-                else R.id.action_splashFragment_to_viewPagerFragment
-            )
+            if (checkOnBoarding()) startHomeActivity()
+            else findNavController().navigate(R.id.action_splashFragment_to_viewPagerFragment)
         }, SPLASH_TIME.toLong())
     }
 

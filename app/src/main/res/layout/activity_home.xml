@@ -3,7 +3,6 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/white"
@@ -15,49 +14,33 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         app:defaultNavHost="true"
+        app:navGraph="@navigation/nav_graph_app"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintVertical_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/bottomNavCardView"
-        app:navGraph="@navigation/app_navigation" />
+        app:layout_constraintBottom_toTopOf="@id/bottomNavigationCardView" />
 
     <com.google.android.material.card.MaterialCardView
-        android:id="@+id/bottomNavCardView"
+        android:id="@+id/bottomNavigationCardView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingBottom="@dimen/_minus50sdp"
-        app:cardBackgroundColor="@color/blue"
-        app:strokeColor="@color/off_white"
-        app:strokeWidth="@dimen/_1sdp"
-        app:cardCornerRadius="@dimen/_14sdp"
+        app:cardBackgroundColor="@color/white"
+        app:cardCornerRadius="0dp"
+        app:cardElevation="@dimen/_40sdp"
         app:layout_constraintBottom_toBottomOf="parent" >
 
-        <androidx.constraintlayout.widget.ConstraintLayout
+        <com.google.android.material.bottomnavigation.BottomNavigationView
+            android:id="@+id/bottomNavigationView"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@color/blue" >
-
-            <com.google.android.material.bottomnavigation.BottomNavigationView
-                android:id="@+id/bottomNavigationView"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="0dp"
-                app:menu="@menu/bottom_nav_menu"
-                android:background="@color/blue"
-                app:itemActiveIndicatorStyle="@color/blue"
-                app:itemBackground="@color/blue"
-                app:itemIconTint="@drawable/nav_icons"
-                app:itemRippleColor="@color/blue"
-                app:itemTextColor="@drawable/nav_icons"
-                app:labelVisibilityMode="selected"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintBottom_toBottomOf="parent" />
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
+            android:background="@color/white"
+            android:backgroundTint="@color/white"
+            app:menu="@menu/bottom_nav_menu"
+            app:labelVisibilityMode="selected"
+            app:itemIconTint="@drawable/nav_icons"
+            app:itemTextColor="@drawable/nav_icons" />
 
     </com.google.android.material.card.MaterialCardView>
 
