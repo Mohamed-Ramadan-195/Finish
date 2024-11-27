@@ -22,6 +22,13 @@
         android:orientation="vertical"
         app:layout_constraintGuide_percent="0.97" />
 
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline80h"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.80" />
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/addressLayout"
         android:layout_width="match_parent"
@@ -77,7 +84,7 @@
         app:layout_constraintTop_toBottomOf="@id/addressLayout">
 
         <com.google.android.material.textview.MaterialTextView
-            android:id="@+id/listIcon"
+            android:id="@+id/list"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:drawableStart="@drawable/ic_list_bulleted"
@@ -102,7 +109,7 @@
         app:layout_constraintTop_toBottomOf="@id/addressLayout">
 
         <com.google.android.material.textview.MaterialTextView
-            android:id="@+id/calendarIcon"
+            android:id="@+id/calendar"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:drawableStart="@drawable/ic_calender"
@@ -137,37 +144,60 @@
         app:srcCompat="@drawable/ic_round_add" />
 
     <com.google.android.material.imageview.ShapeableImageView
-        android:id="@+id/arrow"
+        android:id="@+id/arrowDown"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:visibility="visible"
         app:layout_constraintBottom_toBottomOf="@id/categoriesText"
         app:layout_constraintEnd_toStartOf="@id/addCategory"
         app:layout_constraintTop_toTopOf="@id/categoriesText"
         app:srcCompat="@drawable/ic_arrow_down_round" />
 
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/arrowUp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="@id/categoriesText"
+        app:layout_constraintEnd_toStartOf="@id/addCategory"
+        app:layout_constraintTop_toTopOf="@id/categoriesText"
+        app:srcCompat="@drawable/ic_arrow_up_round" />
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/categoriesRecyclerView"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/_2sdp"
-        app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+        android:layout_height="0dp"
+        android:layout_marginVertical="@dimen/_2sdp"
+        app:layoutManager="androidx.recyclerview.widget.StaggeredGridLayoutManager"
+        app:spanCount="2"
+        tools:listitem="@layout/item_category"
+        android:orientation="vertical"
         app:layout_constraintEnd_toEndOf="@id/guideline97v"
         app:layout_constraintStart_toStartOf="@id/guideline3v"
         app:layout_constraintTop_toBottomOf="@id/categoriesText"
-        app:spanCount="2"
-        tools:listitem="@layout/item_category" />
+        app:layout_constraintBottom_toTopOf="@id/guideline80h" />
+
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/placeholder"
+        android:layout_width="@dimen/_100sdp"
+        android:layout_height="@dimen/_100sdp"
+        android:visibility="gone"
+        app:srcCompat="@drawable/empty_box"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/categoriesText"
+        app:layout_constraintBottom_toTopOf="@id/statusText" />
 
     <com.google.android.material.textview.MaterialTextView
         android:id="@+id/statusText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/_10sdp"
         android:fontFamily="@font/poppins_semi_bold"
         android:text="@string/status"
         android:textColor="@color/blue"
         android:textSize="@dimen/_12ssp"
         app:layout_constraintStart_toStartOf="@id/guideline3v"
-        app:layout_constraintTop_toBottomOf="@id/categoriesRecyclerView" />
+        app:layout_constraintTop_toTopOf="@id/guideline80h" />
 
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/todoCard"

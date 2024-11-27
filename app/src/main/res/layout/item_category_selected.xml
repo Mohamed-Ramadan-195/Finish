@@ -5,8 +5,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:layout_margin="@dimen/_6sdp"
-    android:background="@drawable/category_selected"
+    android:layout_marginHorizontal="@dimen/_4sdp"
+    app:cardBackgroundColor="@color/white"
     app:strokeWidth="@dimen/_1sdp"
     app:cardCornerRadius="@dimen/_4sdp"
     app:cardElevation="0dp" >

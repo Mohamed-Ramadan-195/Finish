@@ -6,6 +6,7 @@
     <color name="dark_blue">#31446C</color>
     <color name="off_white">#FFEFEFEF</color>
     <color name="gray">#FF8E8E8E</color>
+    <color name="gray_icon">#FF596670</color>
     
     <!-- category colors -->
     <color name="yellow">#FFC9CC41</color>

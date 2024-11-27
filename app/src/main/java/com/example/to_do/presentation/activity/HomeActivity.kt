@@ -40,6 +40,7 @@ class HomeActivity : AppCompatActivity() {
         bottomNavigationView.setupWithNavController(navController)
 
         navController.addOnDestinationChangedListener { _, navDestination, _ ->
+            hideBottomNavigation(bottomNavigationView, navDestination)
             showBottomNavigation(bottomNavigationView, navDestination)
         }
     }
@@ -49,6 +50,7 @@ class HomeActivity : AppCompatActivity() {
         navDestination: NavDestination
     ) {
         when (navDestination.id) {
+            R.id.dashboardFragment,
             R.id.splashFragment,
             R.id.viewPagerFragment, -> visibilityBottomNavigation(bottomNavigationView, GONE)
         }
@@ -69,6 +71,7 @@ class HomeActivity : AppCompatActivity() {
         return navController.navigateUp()
     }
 
+    @Suppress("DEPRECATION")
     @Deprecated("This method has been deprecated in favor of using the\n      " +
             "{@link OnBackPressedDispatcher} via {@link #getOnBackPressedDispatcher()}.\n      " +
             "The OnBackPressedDispatcher controls how back button events are dispatched\n      " +

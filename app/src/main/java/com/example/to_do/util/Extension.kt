@@ -13,6 +13,7 @@ import com.example.to_do.util.Constants.GONE
 import com.example.to_do.util.Constants.TODAY_FORMAT
 import com.example.to_do.util.Constants.VISIBLE
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.google.android.material.textview.MaterialTextView
 import java.text.SimpleDateFormat
 import java.util.Calendar
 import java.util.Locale
@@ -53,8 +54,16 @@ fun Fragment.startHomeActivity() {
     requireActivity().finish()
 }
 
-fun getCurrentDate() : String {
+fun getCurrentDate(materialTextView: MaterialTextView) {
     val currentDate = Calendar.getInstance().time
     val formatter = SimpleDateFormat(TODAY_FORMAT, Locale.ENGLISH)
-    return formatter.format(currentDate)
+    materialTextView.text = formatter.format(currentDate)
+}
+
+fun View.visible() {
+    this.visibility = View.VISIBLE
+}
+
+fun View.gone() {
+    this.visibility = View.GONE
 }

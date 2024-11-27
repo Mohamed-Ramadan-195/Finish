@@ -1,10 +1,11 @@
 package com.example.to_do.presentation.home.viewmodel
 
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.to_do.domain.model.Task
-import com.example.to_do.domain.usecases.TaskUseCases
+import com.example.to_do.domain.usecases.task.TaskUseCases
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -16,12 +17,12 @@ class HomeViewModel @Inject constructor(
 ) : ViewModel() {
 
     private var _getAllTasksLiveData = MutableLiveData<List<Task>>()
-    val getAllTasksLiveData get() = _getAllTasksLiveData
+    val getAllTasksLiveData : LiveData<List<Task>> get() = _getAllTasksLiveData
 
     fun getAllTasks() {
         viewModelScope.launch(Dispatchers.IO) {
             try {
-                getAllTasksLiveData.postValue(taskUseCases.getAllTasksUseCase.invoke())
+                _getAllTasksLiveData.postValue(taskUseCases.getAllTasksUseCase.invoke())
             } catch (exception : Exception) {
                 exception.printStackTrace()
             }
@@ -31,6 +32,7 @@ class HomeViewModel @Inject constructor(
     fun deleteTask(task: Task) {
         viewModelScope.launch(Dispatchers.IO) {
             taskUseCases.deleteTaskUseCase.invoke(task)
+            getAllTasks()
         }
     }
 

@@ -1,7 +1,7 @@
-package com.example.to_do.presentation
+package com.example.to_do.presentation.dashboard.adapters
 
+import android.annotation.SuppressLint
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.to_do.R
@@ -29,38 +29,41 @@ class CategoryColorsAdapter (
 
     override fun getItemCount(): Int = colorsList.size
 
+    @SuppressLint("ResourceAsColor")
     override fun onBindViewHolder(holder: CategoryColorsViewHolder, position: Int) {
-        holder.apply {
-            bind(colorsList[position])
-            binding.apply {
-                select.visibility = if (selectItem == position) View.VISIBLE
-                                    else View.GONE
-            }
-        }
+        holder.bind(colorsList[position])
     }
 
     inner class CategoryColorsViewHolder(val binding: ItemCategoryColorBinding)
         : RecyclerView.ViewHolder(binding.root) {
-        fun bind(color: String) {
-            binding.circle.apply {
-                setBackgroundColor (
-                    resources.getColor (
-                        when (color) {
-                            YELLOW_COLOR -> R.color.yellow
-                            GREEN_COLOR -> R.color.green
-                            MINT_GREEN_COLOR -> R.color.mint_green
-                            ORANGE_COLOR -> R.color.orange
-                            PURPLE_COLOR -> R.color.purple
-                            BROWN_COLOR -> R.color.brown
-                            RED_COLOR -> R.color.red
-                            PINK_COLOR -> R.color.pink
-                            SALMON_COLOR -> R.color.salmon
-                            else -> R.color.blue
-                        }
-                    )
-                )
+
+            init {
+                binding.root.setOnClickListener {
+                    selectItem = layoutPosition
+                }
             }
-        }
+
+            @Suppress("DEPRECATION")
+            fun bind(color: String) {
+                binding.circle.apply {
+                    setBackgroundColor (
+                        resources.getColor (
+                            when (color) {
+                                YELLOW_COLOR -> R.color.yellow
+                                GREEN_COLOR -> R.color.green
+                                MINT_GREEN_COLOR -> R.color.mint_green
+                                ORANGE_COLOR -> R.color.orange
+                                PURPLE_COLOR -> R.color.purple
+                                BROWN_COLOR -> R.color.brown
+                                RED_COLOR -> R.color.red
+                                PINK_COLOR -> R.color.pink
+                                SALMON_COLOR -> R.color.salmon
+                                else -> R.color.blue
+                            }
+                        )
+                    )
+                }
+            }
     }
 
 

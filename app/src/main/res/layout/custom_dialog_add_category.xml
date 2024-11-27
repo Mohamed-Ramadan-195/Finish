@@ -4,7 +4,6 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginHorizontal="@dimen/_6sdp"
     app:cardBackgroundColor="@color/white"
     app:cardCornerRadius="@dimen/_8sdp" >
 
@@ -13,7 +12,7 @@
         android:layout_height="match_parent"
         android:orientation="vertical"
         android:gravity="center"
-        android:padding="@dimen/_8sdp" >
+        android:padding="@dimen/_10sdp" >
 
         <EditText
             android:id="@+id/category"
@@ -29,18 +28,38 @@
             android:textSize="@dimen/_13ssp"
             android:fontFamily="@font/poppins_regular" />
 
+<!--        <com.google.android.material.textview.MaterialTextView-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_gravity="start"-->
+<!--            android:text="@string/category_color"-->
+<!--            android:textSize="@dimen/_11ssp"-->
+<!--            android:fontFamily="@font/poppins_regular"-->
+<!--            android:layout_marginTop="@dimen/_6sdp" />-->
+
+<!--        <androidx.recyclerview.widget.RecyclerView-->
+<!--            android:id="@+id/colorsRecyclerView"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginVertical="@dimen/_5sdp"-->
+<!--            android:orientation="horizontal"-->
+<!--            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />-->
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
             android:layout_marginTop="@dimen/_6sdp"
+            android:layout_gravity="center"
+            android:weightSum="2"
+            android:orientation="horizontal"
             android:gravity="center" >
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/cancelButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="@dimen/_10sdp"
+                android:layout_weight="1"
+                android:layout_marginEnd="@dimen/_4sdp"
                 android:text="@string/cancel"
                 android:textColor="@color/gray"
                 android:textSize="@dimen/_12ssp"
@@ -52,7 +71,8 @@
                 android:id="@+id/addButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/_10sdp"
+                android:layout_weight="1"
+                android:layout_marginStart="@dimen/_4sdp"
                 android:text="@string/add"
                 android:textColor="@color/white"
                 android:textSize="@dimen/_12ssp"

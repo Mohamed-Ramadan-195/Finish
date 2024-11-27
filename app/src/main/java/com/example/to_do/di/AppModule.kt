@@ -3,15 +3,22 @@ package com.example.to_do.di
 import android.content.Context
 import androidx.room.Room
 import com.example.to_do.data.local.TaskDao
-import com.example.to_do.data.local.TaskDatabase
+import com.example.to_do.data.local.AppDatabase
+import com.example.to_do.data.local.CategoryDao
+import com.example.to_do.data.repository.CategoryRepositoryImpl
 import com.example.to_do.data.repository.TaskRepositoryImpl
+import com.example.to_do.domain.repository.CategoryRepository
 import com.example.to_do.domain.repository.TaskRepository
-import com.example.to_do.domain.usecases.CreateTaskUseCase
-import com.example.to_do.domain.usecases.DeleteTaskUseCase
-import com.example.to_do.domain.usecases.GetAllTasksUseCase
-import com.example.to_do.domain.usecases.SearchTaskUseCase
-import com.example.to_do.domain.usecases.TaskUseCases
-import com.example.to_do.domain.usecases.UpdateTaskUseCase
+import com.example.to_do.domain.usecases.category.CategoryUseCases
+import com.example.to_do.domain.usecases.category.CreateCategoryUseCase
+import com.example.to_do.domain.usecases.category.DeleteCategoryUseCase
+import com.example.to_do.domain.usecases.category.GetAllCategoriesUseCase
+import com.example.to_do.domain.usecases.task.CreateTaskUseCase
+import com.example.to_do.domain.usecases.task.DeleteTaskUseCase
+import com.example.to_do.domain.usecases.task.GetAllTasksUseCase
+import com.example.to_do.domain.usecases.task.SearchTaskUseCase
+import com.example.to_do.domain.usecases.task.TaskUseCases
+import com.example.to_do.domain.usecases.task.UpdateTaskUseCase
 import com.example.to_do.util.Constants.DATABASE_NAME
 import dagger.Module
 import dagger.Provides
@@ -46,20 +53,41 @@ object AppModule {
 
     @Provides
     @Singleton
-    fun provideTaskDatabase(
-        @ApplicationContext context: Context
-    ) : TaskDatabase {
-        return Room.databaseBuilder (
-            context = context,
-            klass = TaskDatabase::class.java,
-            name = DATABASE_NAME
+    fun provideTaskDao (appDatabase: AppDatabase) : TaskDao = appDatabase.taskDao
+
+    @Provides
+    @Singleton
+    fun provideCategoryRepository (
+        categoryDao: CategoryDao
+    ) : CategoryRepository  = CategoryRepositoryImpl(categoryDao)
+
+    @Provides
+    @Singleton
+    fun provideCategoryUseCases (
+        categoryRepository: CategoryRepository
+    ) : CategoryUseCases {
+        return CategoryUseCases (
+            createCategoryUseCase = CreateCategoryUseCase(categoryRepository),
+            getAllCategoriesUseCase = GetAllCategoriesUseCase(categoryRepository),
+            deleteCategoryUseCase = DeleteCategoryUseCase(categoryRepository)
         )
-        .fallbackToDestructiveMigration()
-        .build()
     }
 
     @Provides
     @Singleton
-    fun provideTaskDao (taskDatabase: TaskDatabase) : TaskDao = taskDatabase.taskDao
+    fun provideCategoryDao (appDatabase: AppDatabase) : CategoryDao = appDatabase.categoryDao
 
+    @Provides
+    @Singleton
+    fun provideAppDatabase(
+        @ApplicationContext context: Context
+    ) : AppDatabase {
+        return Room.databaseBuilder (
+            context = context,
+            klass = AppDatabase::class.java,
+            name = DATABASE_NAME
+        )
+            .fallbackToDestructiveMigration()
+            .build()
+    }
 }

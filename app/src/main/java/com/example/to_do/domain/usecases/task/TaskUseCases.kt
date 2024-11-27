@@ -1,4 +1,4 @@
-package com.example.to_do.domain.usecases
+package com.example.to_do.domain.usecases.task
 
 data class TaskUseCases (
     val getAllTasksUseCase : GetAllTasksUseCase,

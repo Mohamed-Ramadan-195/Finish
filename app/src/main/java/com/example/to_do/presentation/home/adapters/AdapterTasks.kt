@@ -1,18 +1,20 @@
 package com.example.to_do.presentation.home.adapters
 
-import android.annotation.SuppressLint
-import android.graphics.Color
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.widget.PopupMenu
 import androidx.recyclerview.widget.RecyclerView
+import com.example.to_do.R
 import com.example.to_do.databinding.ItemTaskBinding
 import com.example.to_do.domain.model.Task
-import java.util.Random
+import com.example.to_do.util.Constants.DELETE
+import com.example.to_do.util.Constants.UPDATE
 
-class AdapterTasks (
-    private var tasksList : ArrayList<Task>,
-    val onClick : (Task) -> Unit
-) : RecyclerView.Adapter<AdapterTasks.ViewHolderTasks>() {
+class AdapterTasks : RecyclerView.Adapter<AdapterTasks.ViewHolderTasks>() {
+
+    var tasksList : ArrayList<Task> = ArrayList()
+    var onUserClick : OnUserClick? = null
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolderTasks {
         val itemTaskBinding = ItemTaskBinding.inflate(LayoutInflater.from(parent.context), parent, false)
@@ -23,27 +25,13 @@ class AdapterTasks (
 
     override fun onBindViewHolder(holder: ViewHolderTasks, position: Int) {
         holder.bind(tasksList[position])
-    }
-
-    @SuppressLint("NotifyDataSetChanged")
-    fun updateList(list: ArrayList<Task>) {
-        this.tasksList = list
-        notifyDataSetChanged()
+        holder.binding.menu.setOnClickListener { view ->
+            createTaskPopMenu(view, position)
+        }
     }
 
     inner class ViewHolderTasks(val binding: ItemTaskBinding)
         : RecyclerView.ViewHolder(binding.root) {
-
-        init {
-            binding.apply {
-                root.setOnClickListener {
-                    onClick.invoke (tasksList[layoutPosition])
-                }
-                menu.setOnClickListener {
-                    onClick.invoke (tasksList[layoutPosition])
-                }
-            }
-        }
 
         fun bind(task: Task) {
             binding.apply {
@@ -53,16 +41,32 @@ class AdapterTasks (
                 taskCategory.text = task.taskCategory
             }
         }
+    }
 
-        private fun setColorTask() {
-            val random = Random()
-            val color = Color.argb (
-                225,
-                random.nextInt(256),
-                random.nextInt(256),
-                random.nextInt(256)
-            )
-            binding.taskColor.setBackgroundColor(color)
+    private fun createTaskPopMenu(view: View, position: Int) {
+        val popupMenu = PopupMenu(view.context, view)
+        popupMenu.apply {
+            inflate(R.menu.task_options_menu)
+            setOnMenuItemClickListener {
+                when (it.itemId) {
+                    R.id.update -> {
+                        onUserClick?.onClick(tasksList[position], UPDATE)
+                        true
+                    }
+                    R.id.delete -> {
+                        onUserClick?.onClick(tasksList[position], DELETE)
+                        true
+                    }
+                    else -> {
+                        false
+                    }
+                }
+            }
+            show()
         }
+    }
+
+    interface OnUserClick {
+        fun onClick(task : Task, action : String)
     }
 }

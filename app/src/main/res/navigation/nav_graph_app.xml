@@ -22,7 +22,11 @@
         android:id="@+id/navigation_create_task"
         android:name="com.example.to_do.presentation.create.view.CreateTaskFragment"
         android:label="Create Task"
-        tools:layout="@layout/fragment_create_task" />
+        tools:layout="@layout/fragment_create_task" >
+        <action
+            android:id="@+id/action_navigation_create_task_to_dashboardFragment"
+            app:destination="@id/dashboardFragment" />
+    </fragment>
 
     <fragment
         android:id="@+id/navigation_calender"
@@ -33,7 +37,11 @@
         android:id="@+id/detailsFragment"
         android:name="com.example.to_do.presentation.details.view.DetailsFragment"
         android:label="fragment_details"
-        tools:layout="@layout/fragment_details" />
+        tools:layout="@layout/fragment_details" >
+        <argument
+            android:name="task_id"
+            app:argType="long" />
+    </fragment>
     <fragment
         android:id="@+id/dashboardFragment"
         android:name="com.example.to_do.presentation.dashboard.view.DashboardFragment"

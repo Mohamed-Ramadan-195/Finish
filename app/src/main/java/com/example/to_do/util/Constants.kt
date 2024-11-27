@@ -6,7 +6,7 @@ object Constants {
 
     // Task
     const val TASK_NAME = "task name"
-    const val TASK_DESCRIPTION = "task decription"
+    const val TASK_DESCRIPTION = "task description"
     const val TASK_CATEGORY = "task category"
     const val TASK_DATE = "task date"
     const val TASK_TIME = "task time"
@@ -22,17 +22,13 @@ object Constants {
     const val PINK_COLOR = "pink"
     const val SALMON_COLOR = "salmon"
 
-    // Categories
-    const val ALL = "All"
-    const val WORK = "Work"
-    const val HOME = "Home"
-
     // Visibility
     const val VISIBLE = "visible"
     const val GONE = "gone"
 
     // Database
-    const val TABLE_NAME = "Tasks"
+    const val TASKS_TABLE_NAME = "Tasks"
+    const val CATEGORIES_TABLE_NAME = "Categories"
     const val DATABASE_NAME = "Tasks Database"
 
     // Queries
@@ -44,6 +40,8 @@ object Constants {
     const val GET_ALL_TASKS_COMPLETED = "SELECT * FROM TASKS WHERE taskStatus LIKE :taskStatus"
     const val GET_ALL_TASKS_BY_CATEGORY = "SELECT * FROM TASKS WHERE taskCategory LIKE :taskCategory"
 
+    const val GET_ALL_CATEGORIES = "SELECT * FROM Categories"
+
     // Calender
     const val DATE_FORMAT = "dd-MM-yyyy"
     const val TIME_FORMAT = "%02d:%02d"
@@ -54,6 +52,7 @@ object Constants {
     const val COMPLETE = "Complete"
     const val UPDATE = "Update"
 
-    // Language
-    const val ENGLISH = "en"
+    // Arrows
+    const val UP = "up"
+    const val DOWN = "down"
 }

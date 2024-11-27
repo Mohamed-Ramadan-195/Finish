@@ -101,41 +101,73 @@
 
     </com.google.android.material.textfield.TextInputLayout>
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/categoryInputLayout"
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/categoryText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:text="@string/category"
+        android:textSize="@dimen/_12ssp"
+        app:layout_constraintTop_toBottomOf="@id/taskDescriptionInputLayout"
+        app:layout_constraintStart_toStartOf="@id/guideline3v" />
+
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/addCategory"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:srcCompat="@drawable/ic_add"
+        app:tint="@color/gray"
+        app:layout_constraintEnd_toEndOf="@id/guideline97v"
+        app:layout_constraintTop_toTopOf="@id/categoryText"
+        app:layout_constraintBottom_toBottomOf="@id/categoryText" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/categoriesRecyclerView"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        style="@style/Widget.Material3.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
-        android:layout_marginTop="@dimen/_3sdp"
-        app:hintAnimationEnabled="true"
-        android:hint="@string/category"
+        android:layout_marginTop="@dimen/_4sdp"
+        android:orientation="horizontal"
+        tools:listitem="@layout/item_category_selected"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         app:layout_constraintStart_toStartOf="@id/guideline3v"
         app:layout_constraintEnd_toEndOf="@id/guideline97v"
-        app:layout_constraintTop_toBottomOf="@id/taskDescriptionInputLayout" >
+        app:layout_constraintTop_toBottomOf="@id/categoryText" />
 
-        <AutoCompleteTextView
-            android:id="@+id/categorySpinner"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:fontFamily="@font/poppins_regular"
-            android:textSize="@dimen/_12ssp"
-            android:textColor="@color/blue"
-            android:layout_weight="1"
-            android:inputType="none"
-            tools:ignore="LabelFor" />
+<!--    <com.google.android.material.textfield.TextInputLayout-->
+<!--        android:id="@+id/categoryInputLayout"-->
+<!--        android:layout_width="0dp"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        style="@style/Widget.Material3.TextInputLayout.OutlinedBox.ExposedDropdownMenu"-->
+<!--        android:layout_marginTop="@dimen/_3sdp"-->
+<!--        app:hintAnimationEnabled="true"-->
+<!--        android:hint="@string/category"-->
+<!--        app:layout_constraintStart_toStartOf="@id/guideline3v"-->
+<!--        app:layout_constraintEnd_toEndOf="@id/guideline97v"-->
+<!--        app:layout_constraintTop_toBottomOf="@id/taskDescriptionInputLayout" >-->
 
-    </com.google.android.material.textfield.TextInputLayout>
+<!--        <AutoCompleteTextView-->
+<!--            android:id="@+id/categorySpinner"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="match_parent"-->
+<!--            android:fontFamily="@font/poppins_regular"-->
+<!--            android:textSize="@dimen/_12ssp"-->
+<!--            android:textColor="@color/blue"-->
+<!--            android:layout_weight="1"-->
+<!--            android:inputType="none"-->
+<!--            tools:ignore="LabelFor" />-->
+
+<!--    </com.google.android.material.textfield.TextInputLayout>-->
 
     <com.google.android.material.textview.MaterialTextView
         android:id="@+id/taskDateAndTimeText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/_14sdp"
+        android:layout_marginTop="@dimen/_10sdp"
         android:text="@string/date_time"
         android:textSize="@dimen/_12ssp"
         android:fontFamily="@font/poppins_regular"
         app:layout_constraintStart_toStartOf="@id/guideline3v"
-        app:layout_constraintTop_toBottomOf="@id/categoryInputLayout" />
+        app:layout_constraintTop_toBottomOf="@id/categoriesRecyclerView" />
 
     <com.google.android.material.imageview.ShapeableImageView
         android:id="@+id/dateIcon"

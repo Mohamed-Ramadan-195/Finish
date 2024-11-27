@@ -6,13 +6,16 @@ import android.app.TimePickerDialog
 import android.text.Editable
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import android.widget.ArrayAdapter
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import com.example.to_do.R
 import com.example.to_do.base.BaseFragment
 import com.example.to_do.databinding.FragmentCreateTaskBinding
+import com.example.to_do.domain.model.Category
 import com.example.to_do.domain.model.Task
+import com.example.to_do.presentation.create.adapters.AdapterCategorySelected
 import com.example.to_do.presentation.create.viewmodel.CreateTaskViewModel
+import com.example.to_do.presentation.dashboard.viewmodel.CategoryViewModel
 import com.example.to_do.util.Constants.DATE_FORMAT
 import com.example.to_do.util.Constants.EMPTY_STRING
 import com.example.to_do.util.Constants.TIME_FORMAT
@@ -28,6 +31,9 @@ class CreateTaskFragment : BaseFragment<FragmentCreateTaskBinding>() {
 
     private val calendar : Calendar = Calendar.getInstance()
     private val createTaskViewModel : CreateTaskViewModel by viewModels()
+    private val categoryViewModel : CategoryViewModel by viewModels()
+    private val adapterCategorySelected : AdapterCategorySelected by lazy { AdapterCategorySelected() }
+    private var categoryName = EMPTY_STRING
 
     override fun getViewBinding(
         inflater: LayoutInflater,
@@ -36,28 +42,29 @@ class CreateTaskFragment : BaseFragment<FragmentCreateTaskBinding>() {
         return FragmentCreateTaskBinding.inflate(inflater, container, false)
     }
 
-    override fun initialize() {  }
+    override fun initialize() {
+        categoryViewModel.getAllCategories()
+        observers()
+    }
 
     override fun onClicks() {
         binding.apply {
+            addCategory.setOnClickListener { findNavController().navigate(R.id.action_navigation_create_task_to_dashboardFragment) }
             taskDate.setOnClickListener { selectDatePickerDialog() }
             taskTime.setOnClickListener { selectTimePickerDialog() }
             createTaskButton.setOnClickListener { validate() }
+            adapterCategorySelected.onUserClick = object : AdapterCategorySelected.OnUserClick {
+                override fun onClick(category: Category) {
+                    categoryName = category.categoryName
+                }
+            }
         }
     }
 
-    override fun onResume() {
-        super.onResume()
-        setSpinner()
-    }
-
-    @SuppressLint("ResourceAsColor")
-    private fun setSpinner() {
-        val categories = resources.getStringArray(R.array.Categories)
-        val arrayAdapter = ArrayAdapter(requireContext(), R.layout.item_dropdown, categories)
-        binding.categorySpinner.apply {
-            setDropDownBackgroundResource(R.color.white)
-            setAdapter(arrayAdapter)
+    private fun observers() {
+        categoryViewModel.getAllCategoriesLiveData.observe(viewLifecycleOwner) {
+            adapterCategorySelected.categoriesList = it as MutableList<Category>
+            binding.categoriesRecyclerView.adapter = adapterCategorySelected
         }
     }
 
@@ -102,7 +109,7 @@ class CreateTaskFragment : BaseFragment<FragmentCreateTaskBinding>() {
         binding.apply {
             val name : String = taskName.text.toString()
             val description : String = taskDescription.text.toString()
-            val category : String = categorySpinner.text.toString()
+            val category : String = categoryName
             val date : String = taskDate.text.toString()
             val time : String = taskTime.text.toString()
 
@@ -127,8 +134,6 @@ class CreateTaskFragment : BaseFragment<FragmentCreateTaskBinding>() {
         time : String
     ) {
         val task = Task (
-            taskId = 0,
-            taskStatus = 0,
             taskName = name,
             taskDescription = description,
             taskCategory = category,
@@ -140,11 +145,10 @@ class CreateTaskFragment : BaseFragment<FragmentCreateTaskBinding>() {
 
     private fun clearText() {
         binding.apply {
-            taskName.setText(EMPTY_STRING)
-            taskDescription.setText(EMPTY_STRING)
-            categorySpinner.setText(EMPTY_STRING)
-            taskDate.setText(EMPTY_STRING)
-            taskTime.setText(EMPTY_STRING)
+            taskName.text?.clear()
+            taskDescription.text?.clear()
+            taskDate.text?.clear()
+            taskTime.text?.clear()
         }
     }
 
