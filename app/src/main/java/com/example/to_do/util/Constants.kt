@@ -34,6 +34,7 @@ object Constants {
     // Queries
     const val GET_ALL_TASKS = "SELECT * FROM Tasks ORDER BY taskId DESC"
     const val SEARCH_TASK = "SELECT * FROM Tasks ORDER BY taskName LIKE :query OR taskDescription LIKE :query"
+    const val GET_TASK_BY_ID = "SELECT * FROM Tasks WHERE taskId LIKE :id"
     const val GET_ALL_TASKS_BY_DATE = "SELECT * FROM TASKS WHERE taskDate LIKE :date"
     const val GET_ALL_TASKS_BY_NAME = "SELECT * FROM TASKS WHERE taskName LIKE :taskName"
     const val GET_ALL_TASKS_BY_DESCRIPTION = "SELECT * FROM TASKS WHERE taskDescription LIKE :taskDescription"

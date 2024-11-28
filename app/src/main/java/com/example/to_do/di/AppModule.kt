@@ -16,6 +16,7 @@ import com.example.to_do.domain.usecases.category.GetAllCategoriesUseCase
 import com.example.to_do.domain.usecases.task.CreateTaskUseCase
 import com.example.to_do.domain.usecases.task.DeleteTaskUseCase
 import com.example.to_do.domain.usecases.task.GetAllTasksUseCase
+import com.example.to_do.domain.usecases.task.GetTaskById
 import com.example.to_do.domain.usecases.task.SearchTaskUseCase
 import com.example.to_do.domain.usecases.task.TaskUseCases
 import com.example.to_do.domain.usecases.task.UpdateTaskUseCase
@@ -47,7 +48,8 @@ object AppModule {
             createTaskUseCase = CreateTaskUseCase(taskRepository),
             deleteTaskUseCase = DeleteTaskUseCase(taskRepository),
             updateTaskUseCase = UpdateTaskUseCase(taskRepository),
-            searchTaskUseCase = SearchTaskUseCase(taskRepository)
+            searchTaskUseCase = SearchTaskUseCase(taskRepository),
+            getTaskById = GetTaskById(taskRepository)
         )
     }
 

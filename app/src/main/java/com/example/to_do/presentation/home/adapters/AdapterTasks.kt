@@ -33,6 +33,12 @@ class AdapterTasks : RecyclerView.Adapter<AdapterTasks.ViewHolderTasks>() {
     inner class ViewHolderTasks(val binding: ItemTaskBinding)
         : RecyclerView.ViewHolder(binding.root) {
 
+        init {
+            binding.root.setOnClickListener {
+                onUserClick?.onClick(tasksList[layoutPosition], UPDATE)
+            }
+        }
+
         fun bind(task: Task) {
             binding.apply {
                 taskName.text = task.taskName

@@ -136,6 +136,7 @@ class CreateTaskFragment : BaseFragment<FragmentCreateTaskBinding>() {
         val task = Task (
             taskName = name,
             taskDescription = description,
+            taskStatus = false,
             taskCategory = category,
             taskDate = date,
             taskTime = time
@@ -150,6 +151,7 @@ class CreateTaskFragment : BaseFragment<FragmentCreateTaskBinding>() {
             taskDate.text?.clear()
             taskTime.text?.clear()
         }
+        adapterCategorySelected.selectItem = -1
     }
 
 }

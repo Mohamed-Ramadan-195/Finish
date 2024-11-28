@@ -97,5 +97,8 @@
     <string name="doing">Doing</string>
     <string name="done">Done</string>
     <string name="add">Add</string>
+    <string name="task_details">Task Details</string>
+    <string name="nothing_s_here">Nothing\'s Here</string>
+    <string name="start_off_by_adding_to_do_s_and_keep_track_of_them">Start off by adding to-do\'s and keep track of them</string>
 
 </resources>

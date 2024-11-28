@@ -35,7 +35,9 @@ class TaskRepositoryImpl (
     override fun getAllTasksByCategory(category: String): List<Task> =
         taskDao.getAllTasksByCategory(category)
 
-    override fun getAllTasksByStatus(status: Int): List<Task> =
+    override fun getAllTasksByStatus(status: Boolean): List<Task> =
         taskDao.getAllTasksByStatus(status)
 
+    override fun getTaskById(id: Long): Task =
+        taskDao.getTaskById(id)
 }

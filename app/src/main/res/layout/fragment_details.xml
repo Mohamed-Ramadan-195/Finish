@@ -16,6 +16,13 @@
         app:layout_constraintGuide_percent="0.03" />
 
     <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline15h"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.15" />
+
+    <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline95h"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -36,16 +43,53 @@
         android:orientation="vertical"
         app:layout_constraintGuide_percent="0.97" />
 
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/rectangle"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:background="@color/blue"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="@id/guideline15h" />
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/backButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/back"
+        android:textColor="@color/white"
+        android:textSize="@dimen/_12ssp"
+        android:fontFamily="@font/poppins_regular"
+        android:drawableStart="@drawable/ic_arrow_back_ios"
+        android:drawablePadding="@dimen/_4sdp"
+        app:layout_constraintStart_toStartOf="@id/guideline3v"
+        app:layout_constraintTop_toBottomOf="@id/guideline3h" />
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/fragmentAddress"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/_10sdp"
+        android:text="@string/task_details"
+        android:textColor="@color/white"
+        android:textSize="@dimen/_14ssp"
+        android:fontFamily="@font/poppins_semi_bold"
+        app:layout_constraintStart_toStartOf="@id/guideline3v"
+        app:layout_constraintEnd_toEndOf="@id/guideline97v"
+        app:layout_constraintBottom_toBottomOf="@id/guideline15h" />
+
     <com.google.android.material.textview.MaterialTextView
         android:id="@+id/taskNameText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_10sdp"
         android:text="@string/task_name"
         android:textSize="@dimen/_11ssp"
         android:textColor="@color/gray"
         android:fontFamily="@font/poppins_regular"
         app:layout_constraintStart_toStartOf="@id/guideline3v"
-        app:layout_constraintTop_toTopOf="@id/guideline3h" />
+        app:layout_constraintTop_toTopOf="@id/guideline15h" />
 
     <com.google.android.material.textview.MaterialTextView
         android:id="@+id/taskName"
@@ -127,6 +171,7 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="@dimen/_6sdp"
         app:srcCompat="@drawable/ic_edit"
+        android:visibility="gone"
         app:layout_constraintEnd_toEndOf="@id/taskCategory"
         app:layout_constraintTop_toTopOf="@id/taskCategory"
         app:layout_constraintBottom_toBottomOf="@id/taskCategory" />
@@ -195,44 +240,19 @@
         app:layout_constraintTop_toTopOf="@id/taskTime"
         app:layout_constraintBottom_toBottomOf="@id/taskTime" />
 
-    <LinearLayout
-        android:id="@+id/buttonsLayout"
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/updateButton"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:weightSum="2"
-        android:orientation="horizontal"
+        android:padding="@dimen/_10sdp"
+        android:text="@string/update"
+        android:textColor="@color/white"
+        android:textSize="@dimen/_12ssp"
+        android:fontFamily="@font/poppins_regular"
+        app:cornerRadius="@dimen/_6sdp"
+        android:backgroundTint="@color/blue"
         app:layout_constraintStart_toStartOf="@id/guideline3v"
         app:layout_constraintEnd_toEndOf="@id/guideline97v"
-        app:layout_constraintBottom_toBottomOf="@id/guideline95h" >
-
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/deleteButton"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:layout_margin="@dimen/_5sdp"
-            android:padding="@dimen/_8sdp"
-            android:text="@string/delete"
-            android:textColor="@color/white"
-            android:textSize="@dimen/_12ssp"
-            android:fontFamily="@font/poppins_regular"
-            app:cornerRadius="@dimen/_6sdp"
-            android:backgroundTint="@color/red" />
-
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/updateButton"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:layout_margin="@dimen/_5sdp"
-            android:padding="@dimen/_8sdp"
-            android:text="@string/update"
-            android:textColor="@color/white"
-            android:textSize="@dimen/_12ssp"
-            android:fontFamily="@font/poppins_regular"
-            app:cornerRadius="@dimen/_6sdp"
-            android:backgroundTint="@color/blue" />
-
-    </LinearLayout>
+        app:layout_constraintBottom_toTopOf="@id/guideline95h"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

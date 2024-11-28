@@ -25,7 +25,7 @@ import kotlinx.parcelize.Parcelize
 data class Task (
     @PrimaryKey(autoGenerate = true)
     @ColumnInfo val taskId: Long = 0,
-    @ColumnInfo val taskStatus: Boolean = false,
+    @ColumnInfo val taskStatus: Boolean,
     @ColumnInfo val taskName: String,
     @ColumnInfo val taskDescription: String,
     @ColumnInfo val taskCategory : String,    // foreign key

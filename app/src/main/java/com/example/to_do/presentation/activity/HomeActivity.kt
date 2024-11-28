@@ -52,7 +52,8 @@ class HomeActivity : AppCompatActivity() {
         when (navDestination.id) {
             R.id.dashboardFragment,
             R.id.splashFragment,
-            R.id.viewPagerFragment, -> visibilityBottomNavigation(bottomNavigationView, GONE)
+            R.id.viewPagerFragment,
+            R.id.detailsFragment -> visibilityBottomNavigation(bottomNavigationView, GONE)
         }
     }
 

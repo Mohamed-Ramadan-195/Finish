@@ -5,7 +5,7 @@ import androidx.room.RoomDatabase
 import com.example.to_do.domain.model.Category
 import com.example.to_do.domain.model.Task
 
-@Database(entities = [Task::class, Category::class], version = 5, exportSchema = false)
+@Database(entities = [Task::class, Category::class], version = 6, exportSchema = false)
 abstract class AppDatabase : RoomDatabase() {
 
     abstract val taskDao : TaskDao

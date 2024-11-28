@@ -8,6 +8,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.view.Window
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import com.example.to_do.base.BaseFragment
 import com.example.to_do.databinding.CustomDialogAddCategoryBinding
 import com.example.to_do.databinding.FragmentDashboardBinding
@@ -49,6 +50,9 @@ class DashboardFragment : BaseFragment<FragmentDashboardBinding>() {
             }
             arrowUp.setOnClickListener {
                 recyclerViewVisibility(UP)
+            }
+            backButton.setOnClickListener {
+                findNavController().popBackStack()
             }
             adapterCategories.onUserClick = object : AdapterCategories.OnUserClick {
                 override fun onClick(position: Int) {
@@ -99,6 +103,7 @@ class DashboardFragment : BaseFragment<FragmentDashboardBinding>() {
     @SuppressLint("NotifyDataSetChanged")
     private fun observers() {
         categoryViewModel.getAllCategoriesLiveData.observe(viewLifecycleOwner) { data ->
+            placeholder(data)
             adapterCategories.updateList(data)
         }
     }
@@ -117,6 +122,13 @@ class DashboardFragment : BaseFragment<FragmentDashboardBinding>() {
                     arrowUp.visible()
                 }
             }
+        }
+    }
+
+    private fun placeholder(list : List<Category>) {
+        binding.placeholder.apply {
+            if (list.isEmpty()) { visible() }
+            else { gone() }
         }
     }
 }

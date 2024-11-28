@@ -21,5 +21,7 @@ interface TaskRepository {
 
     fun getAllTasksByCategory(category: String): List<Task>
 
-    fun getAllTasksByStatus(status: Int): List<Task>
+    fun getAllTasksByStatus(status: Boolean): List<Task>
+
+    fun getTaskById(id : Long) : Task
 }

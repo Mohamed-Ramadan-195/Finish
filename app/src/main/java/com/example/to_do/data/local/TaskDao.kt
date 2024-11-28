@@ -13,6 +13,7 @@ import com.example.to_do.util.Constants.GET_ALL_TASKS_BY_DATE
 import com.example.to_do.util.Constants.GET_ALL_TASKS_BY_DESCRIPTION
 import com.example.to_do.util.Constants.GET_ALL_TASKS_BY_NAME
 import com.example.to_do.util.Constants.GET_ALL_TASKS_COMPLETED
+import com.example.to_do.util.Constants.GET_TASK_BY_ID
 import com.example.to_do.util.Constants.SEARCH_TASK
 
 @Dao
@@ -43,8 +44,11 @@ interface TaskDao {
     fun getAllTasksByDescription(taskDescription: String) : List<Task>
 
     @Query (GET_ALL_TASKS_COMPLETED)
-    fun getAllTasksByStatus(taskStatus: Int) : List<Task>
+    fun getAllTasksByStatus(taskStatus: Boolean) : List<Task>
 
     @Query (GET_ALL_TASKS_BY_CATEGORY)
     fun getAllTasksByCategory(taskCategory: String) : List<Task>
+
+    @Query(GET_TASK_BY_ID)
+    fun getTaskById(id : Long) : Task
 }

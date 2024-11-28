@@ -48,6 +48,18 @@
             app:srcCompat="@drawable/ic_settings" />
 
         <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/backButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/back"
+            android:textColor="@color/white"
+            android:textSize="@dimen/_12ssp"
+            android:fontFamily="@font/poppins_regular"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@id/settings"
+            app:layout_constraintBottom_toBottomOf="@id/settings" />
+
+        <com.google.android.material.textview.MaterialTextView
             android:id="@+id/today"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
