@@ -22,9 +22,8 @@ import com.example.to_do.util.Constants.COMPLETE
 import com.example.to_do.util.Constants.DELETE
 import com.example.to_do.util.Constants.UPDATE
 import com.example.to_do.util.getCurrentDate
-import com.example.to_do.util.gone
+import com.example.to_do.util.placeholder
 import com.example.to_do.util.showToast
-import com.example.to_do.util.visible
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -92,7 +91,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
             val data = it as ArrayList<Task>
             adapterTasks.tasksList = data
             binding.tasksRecyclerView.adapter = adapterTasks
-            placeholder(data)
+            placeholder(data, binding.placeholderLayout)
         }
     }
 
@@ -129,19 +128,14 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
                     setContentView(binding.root)
                     binding.apply {
                         cancelButton.setOnClickListener { dismiss() }
-                        completeButton.setOnClickListener { TODO() }
+                        completeButton.setOnClickListener {
+
+                            showToast(getString(R.string.task_completed_successfully))
+                        }
                     }
                 }
             }
             show()
         }
     }
-
-    private fun placeholder(list : List<Task>) {
-        binding.placeholderLayout.apply {
-            if (list.isEmpty()) visible()
-            else gone()
-        }
-    }
-
 }

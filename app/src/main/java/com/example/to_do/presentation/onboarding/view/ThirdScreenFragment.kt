@@ -40,5 +40,4 @@ class ThirdScreenFragment : Fragment() {
         super.onDestroyView()
         _binding = null
     }
-
 }

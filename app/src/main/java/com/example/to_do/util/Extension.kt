@@ -5,9 +5,11 @@ import android.content.Intent
 import android.view.View
 import android.widget.EditText
 import android.widget.Toast
+import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.fragment.app.Fragment
 import androidx.viewpager2.widget.ViewPager2
 import com.example.to_do.R
+import com.example.to_do.domain.model.Task
 import com.example.to_do.presentation.activity.HomeActivity
 import com.example.to_do.util.Constants.GONE
 import com.example.to_do.util.Constants.TODAY_FORMAT
@@ -66,4 +68,11 @@ fun View.visible() {
 
 fun View.gone() {
     this.visibility = View.GONE
+}
+
+fun placeholder(list : List<Task>, constraintLayout: ConstraintLayout) {
+    constraintLayout.apply {
+        if (list.isEmpty()) visible()
+        else gone()
+    }
 }

@@ -31,7 +31,7 @@ object Constants {
     const val CATEGORIES_TABLE_NAME = "Categories"
     const val DATABASE_NAME = "Tasks Database"
 
-    // Queries
+    // Queries For Task
     const val GET_ALL_TASKS = "SELECT * FROM Tasks ORDER BY taskId DESC"
     const val SEARCH_TASK = "SELECT * FROM Tasks ORDER BY taskName LIKE :query OR taskDescription LIKE :query"
     const val GET_TASK_BY_ID = "SELECT * FROM Tasks WHERE taskId LIKE :id"
@@ -41,6 +41,7 @@ object Constants {
     const val GET_ALL_TASKS_COMPLETED = "SELECT * FROM TASKS WHERE taskStatus LIKE :taskStatus"
     const val GET_ALL_TASKS_BY_CATEGORY = "SELECT * FROM TASKS WHERE taskCategory LIKE :taskCategory"
 
+    // Queries For Category
     const val GET_ALL_CATEGORIES = "SELECT * FROM Categories"
 
     // Calender

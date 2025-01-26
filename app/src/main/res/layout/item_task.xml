@@ -31,29 +31,20 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent" />
 
-        <CheckBox
-            android:id="@+id/checkBox"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:checked="false"
-            app:layout_constraintStart_toStartOf="@id/guideline5v"
-            app:layout_constraintTop_toTopOf="parent" />
-
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/taskName"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="@dimen/_8sdp"
+            android:layout_marginHorizontal="@dimen/_8sdp"
             android:layout_marginTop="@dimen/_3sdp"
             android:text="@string/default_task_name"
             android:textSize="@dimen/_12ssp"
             android:textColor="@color/black"
             android:textStyle="bold"
             android:fontFamily="@font/poppins_regular"
-            app:layout_constraintStart_toEndOf="@id/checkBox"
+            app:layout_constraintStart_toStartOf="@id/guideline5v"
             app:layout_constraintEnd_toStartOf="@id/menu"
-            app:layout_constraintTop_toTopOf="@id/checkBox"
-            app:layout_constraintBottom_toBottomOf="@id/checkBox" />
+            app:layout_constraintTop_toTopOf="parent" />
 
         <com.google.android.material.imageview.ShapeableImageView
             android:id="@+id/menu"
@@ -70,18 +61,18 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="@dimen/_8sdp"
-            android:layout_marginBottom="@dimen/_4sdp"
+            android:layout_marginVertical="@dimen/_4sdp"
             app:layout_constraintStart_toStartOf="@id/guideline5v"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/checkBox" />
+            app:layout_constraintTop_toBottomOf="@id/taskName" />
 
         <LinearLayout
             android:id="@+id/dateAndTimeLayout"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginVertical="@dimen/_4sdp"
-            android:layout_marginHorizontal="@dimen/_8sdp"
-            app:layout_constraintStart_toStartOf="@id/guideline5v"
+            android:layout_marginEnd="@dimen/_8sdp"
+            app:layout_constraintStart_toStartOf="@id/taskName"
             app:layout_constraintTop_toTopOf="@id/taskCategory"
             app:layout_constraintBottom_toBottomOf="@id/taskCategory" >
 
@@ -125,6 +116,8 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@id/divider"
             app:layout_constraintBottom_toBottomOf="parent" />
+
+        <!-- -->
 
 <!--        <com.google.android.material.textview.MaterialTextView-->
 <!--            android:id="@+id/deleteButton"-->

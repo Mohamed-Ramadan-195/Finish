@@ -17,6 +17,7 @@ import com.example.to_do.presentation.dashboard.adapters.AdapterCategories
 import com.example.to_do.presentation.dashboard.viewmodel.CategoryViewModel
 import com.example.to_do.util.Constants.DOWN
 import com.example.to_do.util.Constants.UP
+import com.example.to_do.util.getCurrentDate
 import com.example.to_do.util.gone
 import com.example.to_do.util.visible
 import dagger.hilt.android.AndroidEntryPoint
@@ -35,6 +36,7 @@ class DashboardFragment : BaseFragment<FragmentDashboardBinding>() {
     }
 
     override fun initialize() {
+        getCurrentDate(binding.today)
         binding.categoriesRecyclerView.adapter = adapterCategories  // set adapter once
         categoryViewModel.getAllCategories() // fetch data
         observers() // observe data

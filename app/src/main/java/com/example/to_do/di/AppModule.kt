@@ -15,6 +15,7 @@ import com.example.to_do.domain.usecases.category.DeleteCategoryUseCase
 import com.example.to_do.domain.usecases.category.GetAllCategoriesUseCase
 import com.example.to_do.domain.usecases.task.CreateTaskUseCase
 import com.example.to_do.domain.usecases.task.DeleteTaskUseCase
+import com.example.to_do.domain.usecases.task.GetAllTasksByDateUseCase
 import com.example.to_do.domain.usecases.task.GetAllTasksUseCase
 import com.example.to_do.domain.usecases.task.GetTaskById
 import com.example.to_do.domain.usecases.task.SearchTaskUseCase
@@ -49,7 +50,8 @@ object AppModule {
             deleteTaskUseCase = DeleteTaskUseCase(taskRepository),
             updateTaskUseCase = UpdateTaskUseCase(taskRepository),
             searchTaskUseCase = SearchTaskUseCase(taskRepository),
-            getTaskById = GetTaskById(taskRepository)
+            getTaskById = GetTaskById(taskRepository),
+            getAllTasksByDateUseCase = GetAllTasksByDateUseCase(taskRepository)
         )
     }
 
@@ -88,8 +90,6 @@ object AppModule {
             context = context,
             klass = AppDatabase::class.java,
             name = DATABASE_NAME
-        )
-            .fallbackToDestructiveMigration()
-            .build()
+        ).fallbackToDestructiveMigration().build()
     }
 }
